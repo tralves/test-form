@@ -85,9 +85,14 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-12">
+                <div class="col-2">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <label id="success-message" class="text-success ml-2 d-none">Contacto inserido com sucesso!</label>
+                </div>
+                <div class="col-10">
+                    <div id="success-message" class="d-none alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Sucesso!</strong> O novo contacto foi guardado.
+                      </div>
+                </div>
                 </div>
             </div>
         </form>
@@ -132,10 +137,14 @@
             }
 
             function submitSuccess() {
-                $('#success-message').removeClass('d-none');
                 $(".form-control").removeClass('is-invalid is-valid');
                 $(".form-control").val("")
                 $("#country").val("Portugal")
+
+                $('#success-message').removeClass('d-none');
+                setTimeout(function() {
+                    $('#success-message').addClass('d-none');
+                }, 3000);
             }   
 
         }
