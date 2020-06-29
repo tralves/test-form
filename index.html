@@ -97,25 +97,37 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="./js/bootstrap-datepicker.js"></script>
     <script>
-        var form = $("form")[0];
-
-        form.addEventListener('submit', validateForm, false);
+        $("form").submit(validateForm);
 
         function validateForm(event) {
+            event.preventDefault();
+            event.stopPropagation();
 
-            var formIsInvalid = false;
+            var formIsValid = true;
 
             $(".form-control").removeClass('is-invalid is-valid');
             
-            formIsInvalid = 
-                !validateRequired($('#firstname')) ||
-                !validateRequired($('#lastname'));
+            formIsValid = 
+                validateRequired($('#firstname')) &&
+                validateRequired($('#lastname'));
 
-            if(formIsInvalid)
-            {
-                event.preventDefault();
-                event.stopPropagation();
+            
+            if(formIsValid) {
+                // enviar dados
+                // tratar resposta
+                var $form = $(this);
+                $.ajax(
+                    $form.attr("action"), 
+                    $form.serialize()
+                )
+                .then(function() {
+                    alert("Thank you!");
+                });
             }
+            else {
+                // mostrar mensagem de erro
+            }
+
         }
 
         function validateRequired(el) {
