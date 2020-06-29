@@ -28,7 +28,7 @@
                 <h1>Adicionar Contacto</h1>
             </div>
         </div>
-        <form novalidate class="" method="POST" data-netlify="true" action="jhgasjhdg">
+        <form novalidate class="" method="POST" data-netlify="true" action>
             <div class="row">
                 <div class="col-6 ">
                     <label for="firstname">Primeiro nome:</label>
@@ -87,6 +87,7 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Enviar</button>
+                    <label id="success-message" class="text-success ml-2 d-none">Contacto inserido com sucesso!</label>
                 </div>
             </div>
         </form>
@@ -131,8 +132,11 @@
             }
 
             function submitSuccess() {
-                alert("sucesso!");
-            }
+                $('#success-message').removeClass('d-none');
+                $(".form-control").removeClass('is-invalid is-valid');
+                $(".form-control").val("")
+                $("#country").val("Portugal")
+            }   
 
         }
 
