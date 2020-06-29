@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <title>Document</title>
+
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link rel="stylesheet" href="./css/datepicker.css">
+ 
+    <style>
+        /* label {
+            color: blue;
+        } */
+        .form-control.is-invalid, 
+        .was-validated .form-control:invalid {
+                border-color: #dc3545;
+        }
+        
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 col-md-6 offset-md-3">
+                <h1 class="text-success">sucesso!</h1>
+                <a href="index.html">Registar novo contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap-datepicker.js"></script>
+    <script>
+        var form = $("form")[0];
+
+        form.addEventListener('submit', validateForm, false);
+
+        function validateForm(event) {
+
+            var formIsInvalid = false;
+
+            $(".form-control").removeClass('is-invalid is-valid');
+            
+            formIsInvalid = 
+                !validateRequired($('#firstname')) ||
+                !validateRequired($('#lastname'));
+
+            if(formIsInvalid)
+            {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }
+
+        function validateRequired(el) {
+            var value = el.val();
+            if( value.length === 0 ) {
+                el.addClass('is-invalid');
+                return false;
+            }
+            else {
+                el.addClass('is-valid');
+                return true;
+            }
+        }
+
+        $('#birthdate').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
+</body>
+</html>
