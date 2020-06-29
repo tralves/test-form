@@ -116,7 +116,7 @@
                 // enviar dados
                 // tratar resposta
                 var $form = $(this);
-                $.ajax(
+                $.post(
                     $form.attr("action"), 
                     $form.serialize()
                 )
