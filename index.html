@@ -8,58 +8,88 @@
 
      <!-- Bootstrap core CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+     <link rel="stylesheet" href="./css/datepicker.css">
+ 
     <style>
         /* label {
             color: blue;
         } */
+        .form-control.is-invalid, 
+        .was-validated .form-control:invalid {
+                border-color: #dc3545;
+        }
+        
     </style>
 </head>
 <body class="bg-light">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-12 col-md-6 offset-md-3">
-                <h1>Contacte-nos</h1>
+                <h1>Adicionar Contacto</h1>
             </div>
         </div>
         <form novalidate class="" method="POST" data-netlify="true">
             <div class="row">
-                <div class="col-12 col-md-6 offset-md-3">
-                    <label for="name">Nome:</label>
-                    <input name="username" id="name" class="form-control" type="text" required/>
+                <div class="col-6 ">
+                    <label for="firstname">Primeiro nome:</label>
+                    <input name="firstname" id="firstname" class="form-control" type="text" required/>
+                </div>
+                <div class="col-6 ">
+                    <label for="lastname">Último nome:</label>
+                    <input name="lastname" id="lastname" class="form-control" type="text" required/>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-12 col-md-6 offset-md-3">
+                <div class="col-12 ">
                     <label for="email">Email:</label>
                     <input name="email" id="email" class="form-control" type="email" required/>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-12 col-md-6 offset-md-3">
+                <div class="col-6 ">
                     <label for="phone">Telefone:</label>
                     <input name="phone" id="phone" class="form-control" type="tel"/>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-12 col-md-6 offset-md-3">
-                    <label for="message">Mensagem:</label>
-                    <textarea name="message" id="message" class="form-control" required></textarea>
+                <div class="col-6 ">
+                    <label for="birthdate">Data de nascimento:</label>
+                    <input name="birthdate" id="birthdate" class="form-control" type="tel"/>
                 </div>
             </div>
-            <div class="col-12 col-md-6 offset-md-3 mt-3">
-                <label for="replyAs">Desejo receber a resposta por:</label>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="replyAs1" select name="replyAs" value="email" class="custom-control-input" checked="checked">
-                    <label class="custom-control-label" for="replyAs1">Email</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="replyAs2" name="replyAs" class="custom-control-input">
-                    <label class="custom-control-label" for="replyAs2">SMS</label>
-                  </div>
+            <div class="row mt-3">
+                <div class="col-12 ">
+                    <label for="message">Notas:</label>
+                    <textarea name="notes" id="notes" class="form-control" required></textarea>
+                </div>
             </div>
             <div class="row mt-3">
-                <div class="col-12 col-md-6 offset-md-3">
+                <div class="col-6">
+                    <label for="sex">Sexo:</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sex1" select name="sex" value="email" class="custom-control-input" checked="checked">
+                        <label class="custom-control-label" for="sex1">Masculino</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sex2" name="sex" class="custom-control-input">
+                        <label class="custom-control-label" for="sex2">Feminino</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="country">País:</label>
+                    <select id="country" name="country" class="form-control">
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Åland Islands">Åland Islands</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa" >American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Portugal" selected>Portugal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
@@ -69,19 +99,58 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+    <script src="./js/bootstrap-datepicker.js"></script>
     <script>
         var form = $("form")[0];
 
         form.addEventListener('submit', validateForm, false);
 
         function validateForm(event) {
-            if (form.checkValidity() === false) {
+
+            var formIsInvalid = false;
+
+            $(".form-control").removeClass('is-invalid is-valid');
+            
+            formIsInvalid = 
+                validateRequired($('#firstname')) ||
+                validateRequired($('#lastname')) ||
+                validateRequired($('#birthdate'));
+
+            var birthdate = $("#birthdate").val();
+
+            var birthdateYear = new Date(birthdate).getFullYear();
+            var nowYear = new Date().getFullYear();
+
+            if( birthdateYear > nowYear - 10 ) {
+                $("#birthdate").addClass('is-invalid');
+                formIsInvalid = true;
+            }
+            else {
+                $("#birthdate").addClass('is-valid');
+            }
+
+            if(formIsInvalid)
+            {
                 event.preventDefault();
                 event.stopPropagation();
             }
-            form.classList.add('was-validated');
         }
+
+        function validateRequired(el) {
+            var value = el.val();
+            if( value.length === 0 ) {
+                el.addClass('is-invalid');
+                return false;
+            }
+            else {
+                el.addClass('is-valid');
+                return true;
+            }
+        }
+
+        $('#birthdate').datepicker({
+            format: 'yyyy-mm-dd'
+        });
     </script>
 </body>
 </html>
