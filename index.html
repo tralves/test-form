@@ -120,9 +120,7 @@
                     $form.attr("action"), 
                     $form.serialize()
                 )
-                .then(function() {
-                    alert("sucesso!");
-                })
+                .then(submitSuccess)
                 .catch(function(erro) {
                     console.log(erro);
                     alert("falhou!");
@@ -130,6 +128,10 @@
             }
             else {
                 // mostrar mensagem de erro
+            }
+
+            function submitSuccess() {
+                alert("sucesso!");
             }
 
         }
