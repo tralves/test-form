@@ -50,10 +50,6 @@
                     <label for="phone">Telefone:</label>
                     <input name="phone" id="phone" class="form-control" type="tel"/>
                 </div>
-                <div class="col-6 ">
-                    <label for="birthdate">Data de nascimento:</label>
-                    <input name="birthdate" id="birthdate" class="form-control" type="tel"/>
-                </div>
             </div>
             <div class="row mt-3">
                 <div class="col-12 ">
@@ -112,22 +108,8 @@
             $(".form-control").removeClass('is-invalid is-valid');
             
             formIsInvalid = 
-                validateRequired($('#firstname')) ||
-                validateRequired($('#lastname')) ||
-                validateRequired($('#birthdate'));
-
-            var birthdate = $("#birthdate").val();
-
-            var birthdateYear = new Date(birthdate).getFullYear();
-            var nowYear = new Date().getFullYear();
-
-            if( birthdateYear > nowYear - 10 ) {
-                $("#birthdate").addClass('is-invalid');
-                formIsInvalid = true;
-            }
-            else {
-                $("#birthdate").addClass('is-valid');
-            }
+                !validateRequired($('#firstname')) ||
+                !validateRequired($('#lastname'));
 
             if(formIsInvalid)
             {
